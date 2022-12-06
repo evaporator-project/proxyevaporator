@@ -32,7 +32,7 @@ app.post('/',(req,res)=>{
             headers: handleResHeaders(headers)
         })
     }).catch(axiosErr=>{
-        const {status,data,headers} = axiosErr.response
+        const {status,data,headers} = axiosErr?.response || {status:500,data:{},headers:{}}
         res.send({
             status:status,
             data:data,
